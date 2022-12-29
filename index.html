@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Binary/Decimal Converter</title>
+  </head>
+  <body>
+    <center><h1>Binary/Decimal Converter</h1></center>
+    <form action="#">
+      <center>
+        <label for="input">Enter a Binary or Decimal Number :</label>
+        <input type="text" id="input" />
+        <br />
+        <input type="radio" name="conversion" value="decimal" checked /> Decimal
+        to Binary <input type="radio" name="conversion" value="binary" /> Binary
+        to Decimal
+        <br />
+        <button type="button" id="convert-button">Convert</button>
+        <br /><br />
+        <hr />
+
+        <h1 id="result"></h1>
+      </center>
+    </form>
+    <script>
+      function convert() {
+        const input = document.getElementById("input").value;
+        const conversion = document.querySelector(
+          'input[name="conversion"]:checked'
+        ).value;
+        const result = document.getElementById("result");
+        let ans;
+        if (conversion === "binary") {
+          ans = parseInt(input, 2);
+        } else {
+          ans = (input >>> 0).toString(2);
+        }
+        result.innerHTML = ans;
+      }
+
+      const button = document.getElementById("convert-button");
+      button.addEventListener("click", convert);
+    </script>
+  </body>
+</html>
